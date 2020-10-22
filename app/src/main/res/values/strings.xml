@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Torpedo Cafe</string>
+
+    <string name="name">Name: </string>
+    <string name="price">Price: </string>
+    <string name="stock">Stock: </string>
+
+    <string name="add">Add</string>
 </resources>
