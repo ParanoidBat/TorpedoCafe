@@ -5,6 +5,8 @@ public class Item {
     private Double price;
     private int stock;
 
+    public Item(){}
+
     public Item(String name, double price, int stock){
         this.name = name;
         this.price = price;

@@ -18,4 +18,12 @@ public class FirebaseController {
 
         databaseReference = null;
     }
+
+    public void updateStock(String name, int amount){
+        databaseReference = firebaseDatabase.getReference("Items");
+
+        databaseReference.child(name).child("stock").setValue(amount);
+
+        databaseReference = null;
+    }
 }
