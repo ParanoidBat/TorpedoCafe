@@ -100,4 +100,32 @@ public class Controller {
 
         return bill;
     }
+
+    public String orderToString(Order order){
+        String stringOrder = "";
+
+        ArrayList<String> names = order.getNames();
+        ArrayList<Integer> quantity = order.getQuantity();
+
+        for(int i = 0; i < names.size(); i++){
+            stringOrder+= (String.valueOf(quantity.get(i)) + "x" + names.get(i) + System.lineSeparator());
+        }
+
+        return stringOrder;
+    }
+
+    public int calcualteBill(Order order){
+        if(order.getNames().isEmpty()) return -1;
+
+        int bill = 0;
+
+        ArrayList<Integer> quantity = order.getQuantity();
+        ArrayList<Double> prices = order.getPrices();
+
+        for(int i = 0; i < quantity.size(); i++){
+            bill+= prices.get(i)*quantity.get(i);
+        }
+
+        return bill;
+    }
 }

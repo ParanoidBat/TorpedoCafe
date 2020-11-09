@@ -2,6 +2,7 @@ package com.example.android.torpedocafe;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
-public class SalePointActivity extends AppCompatActivity {
+public class SalePointActivity extends AppCompatActivity implements ConfirmDialogFragment.DialogListener{
     private RecyclerView rv;
 
     private FirebaseRecyclerAdapter adapter;
@@ -33,6 +33,10 @@ public class SalePointActivity extends AppCompatActivity {
     private Button btnOrder;
 
     private Controller controller;
+
+    private int bill = -1;
+
+    private String stringOrder = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +59,11 @@ public class SalePointActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    controller.confirmOrder(order);
+                    bill = controller.calcualteBill(order);
+                    if(bill <= 0) return;
+
+                    stringOrder = controller.orderToString(order);
+                    showDialog();
                 }
                 catch (Exception e){
                     e.printStackTrace();
@@ -136,6 +144,27 @@ public class SalePointActivity extends AppCompatActivity {
         databaseReference = null;
 
         super.onDestroy();
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialogFragment) {
+        controller.confirmOrder(order);
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialogFragment) {
+
+    }
+
+    public void showDialog(){
+        DialogFragment dialogFragment = new ConfirmDialogFragment();
+
+        Bundle args = new Bundle();
+        args.putString("order", stringOrder);
+        args.putInt("bill", bill);
+        dialogFragment.setArguments(args);
+
+        dialogFragment.show(getSupportFragmentManager(), "ConfirmDialogFragment");
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
