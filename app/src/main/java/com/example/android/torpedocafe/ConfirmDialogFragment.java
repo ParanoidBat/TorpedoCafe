@@ -70,6 +70,6 @@ public class ConfirmDialogFragment extends DialogFragment {
 
     private void setOrder(String order, int bill){
         tvOrder.setText(order);
-        tvBill.setText(String.valueOf(bill));
+        tvBill.setText("Total: " + String.valueOf(bill));
     }
 }

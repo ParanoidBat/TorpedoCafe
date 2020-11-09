@@ -59,7 +59,7 @@ public class SalePointActivity extends AppCompatActivity implements ConfirmDialo
             @Override
             public void onClick(View view) {
                 try {
-                    bill = controller.calcualteBill(order);
+                    bill = controller.calculateBill(order);
                     if(bill <= 0) return;
 
                     stringOrder = controller.orderToString(order);

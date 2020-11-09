@@ -1,7 +1,5 @@
 package com.example.android.torpedocafe;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 
 public class Controller {
@@ -92,6 +90,8 @@ public class Controller {
             bill += (prices.get(i)*quantity.get(i));
         }
 
+        fc.salePerOrder(bill);
+
         // reset order instance
         order.stocks.clear();
         order.names.clear();
@@ -114,7 +114,7 @@ public class Controller {
         return stringOrder;
     }
 
-    public int calcualteBill(Order order){
+    public int calculateBill(Order order){
         if(order.getNames().isEmpty()) return -1;
 
         int bill = 0;

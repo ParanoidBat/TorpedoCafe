@@ -12,7 +12,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.os.Bundle;
 
 public class AdminActivity extends AppCompatActivity {
-    public static final int NUM_PAGES = 2;
+    public static final int NUM_PAGES = 3;
 
     private ViewPager viewPager;
     private PagerAdapter pagerAdapter;
@@ -43,6 +43,8 @@ public class AdminActivity extends AppCompatActivity {
                     return ViewItemFragment.newInstance();
                 case 1:
                     return AddItemFragment.newInstance();
+                case 2:
+                    return SalesFragment.newInstance();
                 default:
                     return null;
             }
@@ -61,6 +63,8 @@ public class AdminActivity extends AppCompatActivity {
                     return "ViewItem";
                 case 1:
                     return "AddItem";
+                case 2:
+                    return "Sales";
                 default:
                     return null;
             }
