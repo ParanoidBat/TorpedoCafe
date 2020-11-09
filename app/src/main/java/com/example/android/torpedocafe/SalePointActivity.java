@@ -147,6 +147,9 @@ public class SalePointActivity extends AppCompatActivity implements ConfirmDialo
     }
 
     @Override
+    public void onBackPressed(){}
+
+    @Override
     public void onDialogPositiveClick(DialogFragment dialogFragment) {
         controller.confirmOrder(order);
     }

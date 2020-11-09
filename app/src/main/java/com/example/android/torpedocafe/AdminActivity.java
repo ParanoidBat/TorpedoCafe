@@ -29,6 +29,9 @@ public class AdminActivity extends AppCompatActivity {
         viewPager.setAdapter(pagerAdapter);
     }
 
+    @Override
+    public void onBackPressed(){}
+
     private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter{
 
         public ScreenSlidePagerAdapter(@NonNull FragmentManager fm) {

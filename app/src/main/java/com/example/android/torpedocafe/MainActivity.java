@@ -6,34 +6,49 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    Button btnTest, btnUser;
+    private Button btnAdmin, btnUser;
+    private EditText etPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnTest = findViewById(R.id.btn_test);
+        btnAdmin = findViewById(R.id.btn_admin);
         btnUser = findViewById(R.id.btn_user);
 
-        btnTest.setOnClickListener(new View.OnClickListener() {
+        etPassword = findViewById(R.id.et_password);
+
+        btnAdmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                test();
+                if(!etPassword.getText().toString().equals("RiazAdmin00l")){
+                    Toast.makeText(MainActivity.this, "Invalid Password!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                admin();
             }
         });
 
         btnUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!etPassword.getText().toString().equals("12Torpedo21")){
+                    Toast.makeText(MainActivity.this, "Invalid Password!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 user();
             }
         });
     }
 
-    private void test(){
+    private void admin(){
         Intent intent = new Intent(getBaseContext(), AdminActivity.class);
 
         startActivity(intent);

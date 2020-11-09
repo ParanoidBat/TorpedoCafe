@@ -76,5 +76,7 @@ public class SalesFragment extends Fragment {
 
             }
         });
+
+        dbref = null;
     }
 }

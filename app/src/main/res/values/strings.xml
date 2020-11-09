@@ -15,4 +15,6 @@
     <string name="cancel">Cancel</string>
 
     <string name="today_sale">Today\'s Sale: </string>
+
+    <string name="password">Password</string>
 </resources>
