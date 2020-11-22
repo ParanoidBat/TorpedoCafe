@@ -4,6 +4,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 // https://torpedo-cafe-7bd4c.firebaseio.com/ @waynetech010
@@ -30,7 +31,7 @@ public class FirebaseController {
         databaseReference = null;
     }
 
-    public void salePerOrder(int sale){
+    public void salePerOrder(int sale, ArrayList<String> names, ArrayList<Integer> quantity){
         databaseReference = firebaseDatabase.getReference("Sale");
 
         SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
@@ -38,7 +39,15 @@ public class FirebaseController {
 
         databaseReference = databaseReference.child(date);
 
+        // push sale revenue
         databaseReference.push().setValue(sale);
+
+        // push sold stock
+        databaseReference = firebaseDatabase.getReference("Sold").child(date).push();
+
+        for(int i = 0; i < names.size(); i++){
+            databaseReference.child(names.get(i)).setValue(quantity.get(i));
+        }
 
         databaseReference = null;
     }

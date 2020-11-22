@@ -24,9 +24,10 @@ public class Controller {
             e.printStackTrace();
 
             order.stocks = new ArrayList<>();
+            order.quantity = new ArrayList<>();
             order.names = new ArrayList<>();
             order.prices = new ArrayList<>();
-            order.quantity = new ArrayList<>();
+
 
             order.names.add(item.getName());
             order.prices.add(item.getPrice());
@@ -90,7 +91,7 @@ public class Controller {
             bill += (prices.get(i)*quantity.get(i));
         }
 
-        fc.salePerOrder(bill);
+        fc.salePerOrder(bill, names, quantity);
 
         // reset order instance
         order.stocks.clear();

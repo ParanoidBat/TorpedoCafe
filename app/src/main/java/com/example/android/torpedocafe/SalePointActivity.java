@@ -103,6 +103,7 @@ public class SalePointActivity extends AppCompatActivity implements ConfirmDialo
 
                         if(!controller.updateOrder(order, item, Integer.parseInt(viewHolder.tvAmount.getText().toString())) ){
                             Toast.makeText(SalePointActivity.this, "Not Enough Stock, Item Not Added!", Toast.LENGTH_SHORT).show();
+                            viewHolder.tvAmount.setText("0");
                         }
                     }
                 });
@@ -116,6 +117,7 @@ public class SalePointActivity extends AppCompatActivity implements ConfirmDialo
 
                         if(!controller.updateOrder(order, item, Integer.parseInt(viewHolder.tvAmount.getText().toString())) ){
                             Toast.makeText(SalePointActivity.this, "Not Enough Stock, Item Not Added!", Toast.LENGTH_SHORT).show();
+                            viewHolder.tvAmount.setText("0");
                         }
                     }
                 });
