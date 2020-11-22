@@ -9,11 +9,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.appcompat.widget.Toolbar;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -46,6 +49,9 @@ public class SalePointActivity extends AppCompatActivity implements ConfirmDialo
         rv = findViewById(R.id.sp_rv);
 
         btnOrder = findViewById(R.id.btn_order);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         GridLayoutManager layoutManager = new GridLayoutManager(getBaseContext(), 2); // spanCount is number of columns
 
@@ -150,6 +156,25 @@ public class SalePointActivity extends AppCompatActivity implements ConfirmDialo
 
     @Override
     public void onBackPressed(){}
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.item_logout:
+                finish();
+                return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialogFragment) {

@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
+                clear();
                 admin();
             }
         });
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 }
 
+                clear();
                 user();
             }
         });
@@ -58,5 +60,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(getBaseContext(), SalePointActivity.class);
 
         startActivity(intent);
+    }
+
+    private void clear(){
+        etPassword.setText("");
     }
 }
