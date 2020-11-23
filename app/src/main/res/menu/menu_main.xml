@@ -8,4 +8,11 @@
         android:title="Logout"
         />
 
+    <item
+        android:id="@+id/item_order"
+        app:showAsAction="ifRoom"
+        android:title="@string/order"
+        android:icon="@drawable/ic_done_white_18dp"
+        />
+
 </menu>

@@ -24,6 +24,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 
+import java.io.IOException;
+
 public class SalePointActivity extends AppCompatActivity implements ConfirmDialogFragment.DialogListener{
     private RecyclerView rv;
 
@@ -32,8 +34,6 @@ public class SalePointActivity extends AppCompatActivity implements ConfirmDialo
     private DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Items");
 
     private Order order;
-
-    private Button btnOrder;
 
     private Controller controller;
 
@@ -48,8 +48,6 @@ public class SalePointActivity extends AppCompatActivity implements ConfirmDialo
 
         rv = findViewById(R.id.sp_rv);
 
-        btnOrder = findViewById(R.id.btn_order);
-
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -60,22 +58,6 @@ public class SalePointActivity extends AppCompatActivity implements ConfirmDialo
 
         order = new Order();
         controller = new Controller();
-
-        btnOrder.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                try {
-                    bill = controller.calculateBill(order);
-                    if(bill <= 0) return;
-
-                    stringOrder = controller.orderToString(order);
-                    showDialog();
-                }
-                catch (Exception e){
-                    e.printStackTrace();
-                }
-            }
-        });
 
         populate();
     }
@@ -169,6 +151,21 @@ public class SalePointActivity extends AppCompatActivity implements ConfirmDialo
         switch (item.getItemId()) {
             case R.id.item_logout:
                 finish();
+                return true;
+
+            case R.id.item_order:
+                try {
+                    bill = controller.calculateBill(order);
+                    if(bill <= 0){
+                        throw new IOException("bill less than 0");
+                    }
+
+                    stringOrder = controller.orderToString(order);
+                    showDialog();
+                }
+                catch (Exception e){
+                    e.printStackTrace();
+                }
                 return true;
 
             default:

@@ -17,4 +17,5 @@
     <string name="today_sale">Today\'s Sale: </string>
 
     <string name="password">Password</string>
+    <string name="order">Order</string>
 </resources>
