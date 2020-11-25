@@ -11,7 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SalePointActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
-        <activity android:name=".AdminActivity" />
+        <activity android:name=".AdminActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

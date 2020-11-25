@@ -80,9 +80,9 @@ public class ViewItemFragment extends Fragment {
                 viewHolder.btnUpdate.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View view) {
-                        if(item.getStock() != Integer.parseInt(viewHolder.etStock.getText().toString())){
+                        if(item.getStock() != Integer.parseInt(viewHolder.etNewStock.getText().toString())){
                             Controller controller = new Controller();
-                            controller.addStock(item, viewHolder.etStock.getText().toString());
+                            controller.addStock(item, viewHolder.etNewStock.getText().toString());
                         }
 
                         item.setPrice(Double.parseDouble(viewHolder.etPrice.getText().toString()));
@@ -94,6 +94,18 @@ public class ViewItemFragment extends Fragment {
                         return true;
                     }
                 });
+
+                viewHolder.btnDelete.setOnLongClickListener(new View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(View view) {
+                        FirebaseController fc = new FirebaseController();
+                        fc.deleteItem(item.getName());
+
+                        Toast.makeText(getActivity().getBaseContext(), item.getName() + " Deleted Successfully!", Toast.LENGTH_SHORT).show();
+                        return true;
+                    }
+                });
+
             }
         };
 
@@ -113,26 +125,29 @@ public class ViewItemFragment extends Fragment {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView tvName;
-        EditText etStock, etPrice;
-        Button btnUpdate;
+        TextView tvName, tvStock;
+        EditText etPrice, etNewStock;
+        Button btnUpdate, btnDelete;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
             tvName = itemView.findViewById(R.id.tv_view_name);
+            tvStock = itemView.findViewById(R.id.tv_view_stock);
 
-            etStock = itemView.findViewById(R.id.et_view_stock);
+            etNewStock = itemView.findViewById(R.id.et_new_stock);
             etPrice = itemView.findViewById(R.id.et_view_price);
 
             btnUpdate = itemView.findViewById(R.id.btn_view_update);
+            btnDelete = itemView.findViewById(R.id.btn_view_delete);
         }
 
         public void setData(String name, String price, String stock){
             tvName.setText(name);
+            tvStock.setText(stock);
 
             etPrice.setText(price);
-            etStock.setText(stock);
+            etNewStock.setText("0");
         }
     }
 

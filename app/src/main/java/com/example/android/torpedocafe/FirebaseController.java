@@ -51,4 +51,12 @@ public class FirebaseController {
 
         databaseReference = null;
     }
+
+    public void deleteItem(String name){
+        databaseReference = FirebaseDatabase.getInstance().getReference("Items");
+
+        databaseReference.child(name).setValue(null);
+
+        databaseReference = null;
+    }
 }

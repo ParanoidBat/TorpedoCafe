@@ -4,6 +4,7 @@
     <string name="name">Name: </string>
     <string name="price">Price: </string>
     <string name="stock">Stock: </string>
+    <string name="new_stock">New Stock: </string>
 
     <string name="add">Add</string>
     <string name="update">Update</string>
@@ -18,4 +19,6 @@
 
     <string name="password">Password</string>
     <string name="order">Order</string>
+
+    <string name="delete">Delete</string>
 </resources>

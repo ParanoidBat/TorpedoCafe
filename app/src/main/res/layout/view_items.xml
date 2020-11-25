@@ -4,6 +4,8 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="10dp"
+    android:layout_marginBottom="10dp"
+    android:background="#fcf"
     >
 
     <TextView
@@ -31,48 +33,92 @@
         android:layout_marginRight="5dp"
         />
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/et_view_stock"
+        android:id="@+id/tv_view_stock"
         app:layout_constraintStart_toEndOf="@id/tv_stock"
         app:layout_constraintTop_toBottomOf="@id/tv_view_name"
-        android:inputType="numberSigned"
         android:padding="2dp"
+        android:textSize="20dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_price"
+        app:layout_constraintTop_toBottomOf="@id/tv_stock"
+        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/price"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
         />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/et_view_price"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_view_name"
+        app:layout_constraintStart_toEndOf="@id/tv_price"
+        app:layout_constraintTop_toBottomOf="@id/tv_stock"
         android:inputType="numberDecimal"
-        android:layout_marginEnd="10dp"
         android:padding="2dp"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
         />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/tv_view_name"
-        app:layout_constraintEnd_toStartOf="@id/et_view_price"
-        android:text="@string/price"
+        android:id="@+id/tv_new_stock"
+        android:text="@string/new_stock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_price"
         android:textSize="20dp"
         android:textStyle="bold"
+        android:layout_marginStart="10dp"
         android:layout_marginEnd="5dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_new_stock"
+        app:layout_constraintStart_toEndOf="@id/tv_new_stock"
+        app:layout_constraintTop_toBottomOf="@id/tv_price"
+        android:padding="2dp"
+        android:inputType="number"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_view_delete"
+        app:layout_constraintTop_toBottomOf="@id/et_new_stock"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_view_update"
+        android:text="@string/delete"
+        android:layout_marginTop="10dp"
+        android:padding="2dp"
+        android:background="@drawable/rounded_button"
         />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_view_update"
-        app:layout_constraintTop_toBottomOf="@id/et_view_price"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_new_stock"
+        app:layout_constraintStart_toEndOf="@id/btn_view_delete"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="5dp"
         android:text="@string/update"
+        android:layout_marginTop="10dp"
         android:padding="2dp"
+        android:background="@drawable/rounded_button"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
